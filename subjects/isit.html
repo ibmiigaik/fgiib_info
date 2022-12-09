@@ -11,8 +11,8 @@
   </head>
   <body class="bg-gray-100">
 
-        <nav class="px-2 bg-white border-gray-200 fixed w-full">
-            <div class="container flex flex-wrap items-center justify-between mx-auto" x-data="{ burgerOpen: false }">
+        <nav class="px-2 bg-white border-gray-200 fixed w-full" x-data="{ burgerOpen: false }" @click.away="burgerOpen = false">
+            <div class="container flex flex-wrap items-center justify-between mx-auto" >
                 <a class="flex items-center" href="/fgiib_info/index.html">
                     <img src="../assets/logo_cropped.png" class="h-6 mr-3 sm:h-10">
                 </a>
