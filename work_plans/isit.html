@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Темы ИИС</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+  </head>
+  <body class="bg-gray-100">
+
+        <nav class="px-2 bg-white border-gray-200 fixed w-full">
+            <div class="container flex flex-wrap items-center justify-between mx-auto" x-data="{ burgerOpen: false }">
+                <a class="flex items-center" href="/index.html">
+                    <img src="../assets/logo_cropped.png" class="h-6 mr-3 sm:h-10">
+                </a>
+
+                <button @click="burgerOpen = !burgerOpen" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                </button>
+
+                <div class="w-full md:block md:w-auto" id="navbar-default" :class="burgerOpen ? '' : 'hidden'">
+                    <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+                        <li x-data="{ open: false }" @mouseover.away ="open = false">
+                            <button @mouseover="open = true" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Учебные планы <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+                            <div id="dropdownNavbar" class="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded shadow w-10/12 md:w-44" :class="open ? '' : 'hidden'">
+                                <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                      <a href="/work_plans/ib.html" class="block px-4 py-2 hover:bg-gray-100">ИБ</a>
+                                    </li>
+                                    <li>
+                                      <a href="/work_plans/isit.html"  class="block px-4 py-2 hover:bg-gray-100">ИСиТ</a>
+                                    </li>
+                                    <li>
+                                      <a href="/work_plans/pi.html" class="block px-4 py-2 hover:bg-gray-100">ПИ</a>
+                                    </li>
+                                  </ul>
+                            </div>
+                        </li>
+
+                        <li x-data="{ open: false }" @mouseover.away="open = false">
+                            <button @mouseover="open = true" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Темы ВКР <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+                            <div class="absolute z-20 font-normal bg-white divide-y divide-gray-100 rounded shadow w-10/12 md:w-44" :class="open ? '' : 'hidden'">
+                                <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                      <a href="/subjects/ib.html" class="block px-4 py-2 hover:bg-gray-100">ИБ</a>
+                                    </li>
+                                    <li>
+                                      <a href="/subjects/isit.html" class="block px-4 py-2 hover:bg-gray-100">ИСиТ</a>
+                                    </li>
+                                    <li>
+                                      <a href="/subjects/pi.html" class="block px-4 py-2 hover:bg-gray-100">ПИ</a>
+                                    </li>
+                                  </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="flex flex-col pb-10">
+        <h1 class="text-2xl my-10 font-mediuim mt-20 basis-4/5 mx-auto">Учебный план ИСиТ</h1>
+
+        <div class="flex flex-wrap  justify-center" x-data="{ courses: Alpine.store('courses') }">
+          
+
+            <div class="flex flex-col mx-auto pb-5 rounded mt-5 md:basis-2/5 bg-white px-5 divide-y">
+              <h1 class="text-xl my-10 font-mediuim">1 курс</h1>
+
+              <template x-for="subject in courses.course_1">
+
+                <div class="bg-white text-gray-800 text-lg p-1" x-text="subject">
+                </div>
+
+              </template>
+
+            </div>
+
+            <div class="flex flex-col mx-auto pb-5 rounded mt-5 md:basis-2/5 bg-white px-5 divide-y" >
+              <h1 class="text-xl my-10 font-mediuim">2 курс</h1>
+
+              <template x-for="subject in courses.course_2">
+
+                <div class="bg-white text-gray-800 text-lg p-1" x-text="subject">
+                </div>
+
+              </template>
+
+            </div>
+
+            <div class="flex flex-col mx-auto pb-5 rounded mt-20 md:basis-2/5 bg-white px-5 divide-y" >
+              <h1 class="text-xl my-10 font-mediuim">3 курс</h1>
+
+              <template x-for="subject in courses.course_3">
+
+                <div class="bg-white text-gray-800 text-lg p-1" x-text="subject">
+                </div>
+
+              </template>
+
+            </div>
+
+            <div class="flex flex-col mx-auto pb-5 rounded mt-20 md:basis-2/5 bg-white px-5 divide-y" >
+              <h1 class="text-xl my-10 font-mediuim">4 курс</h1>
+
+              <template x-for="subject in courses.course_4">
+
+                <div class="bg-white text-gray-800 text-lg p-1" x-text="subject">
+                </div>
+
+              </template>
+
+            </div>
+
+        </div>
+      </div>
+
+  </body>
+
+<script>
+  const course_1 = [
+    'История (история России и всеобщая история)',
+    'Иностранный язык',
+    'Безопасность жизнедеятельности',
+    'Элективные курсы по физической культуре и спорту',
+    'Математический анализ',
+    'Линейная алгебра',
+    'Дискретная математика',
+    'Основы информационной безопасности',
+    'Информатика',
+    'Дискретная математика в информатике',
+    'Языки программирования',
+    'Трехмерное моделирование',
+    'История МИИГАиК',
+    'Учебная (ознакомительная) практика по программированию',
+  ]
+
+  const course_2 = [
+    'Философия',
+    'Иностранный язык',
+    'Элективные курсы по физической культуре и спорту',
+    'Дискретная математика',
+    'Теория вероятности и математическая статистика',
+    'Физика',
+    'Информационные технологии в геоинформатике',
+    'Проектная деятельность',
+    'Документоведение и документооборот',
+    'Администрирование информационных и автоматизированных систем',
+    'Основы права',
+    'Психология саморазвития',
+    'Учебная (ознакомительная) практика по веб-программированию'
+
+  ]
+
+
+  const course_3 = [
+    'Физическая культура и спорт',
+    'Элективные курсы по физической культуре и спорту',
+    'Моделирование процессов и систем',
+    'Методы и средства проектирования информационных систем и технологий',
+    'Криптографические методы защиты информации',
+    'Методы решения задач на графах',
+    'Основы машинного обучения',
+    'Экономическое обоснование проектов',
+    'Проектирование сетей и систем передачи данных',
+    'Основы управленческой деятельности',
+    'Проектирование геоинформационных систем',
+    'Проектирование распределенных систем',
+    'Учебная (проектно-технологическая) практика',
+    'Волонтерская учебная практика',
+  ]
+
+  const course_4 = [
+  'Управление проектами в области разработки информационных систем',
+'Платформы и инструментальные средства для реализации информационных систем',
+'Деловой русский язык',
+'Геоинформационные системы и технологии',
+'Технологии пространственного анализа',
+'Теория систем обработки информации',
+'Системы поддержки принятия решений',
+'Сбор и представление геоданных в информационных системах',
+'Системы сбора пространственно-временных данных',
+'Анализ геопространственных данных',
+'Большие пространственные данные',
+'Компьютерная графика',
+'Визуализация пространственных данных',
+'Теория и алгоритмы распознавания образов',
+'Искусственные нейронные сети',
+'Преддипломная производственная практика',
+'Выполнение и защита выпускной квалификационной работы',
+
+  ]
+
+
+  document.addEventListener('alpine:init', () => {
+            Alpine.store('courses', { course_1: course_1, course_2: course_2, course_3, course_4 })
+        })
+
+</script>
+
+</html>
